@@ -7,4 +7,4 @@ COPY . .
 
 RUN npm install --production
 
-ENTRYPOINT ["node", "./src/index.js"]
+ENTRYPOINT ["node", "/src/index.js"]
