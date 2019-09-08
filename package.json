@@ -1,0 +1,30 @@
+{
+  "name": "github-actions-publish-docker",
+  "version": "1.0.0",
+  "description": "Publish to docker GitHub action",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manusa/actions-publish-docker.git"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "docker"
+  ],
+  "author": "Marc Nuri <marc@marcnuri.com> (http://blog.marcnuri.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manusa/actions-publish-docker/issues"
+  },
+  "homepage": "https://github.com/manusa/actions-publish-docker#readme",
+  "dependencies": {
+    "@actions/core": "^1.1.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

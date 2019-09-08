@@ -1,0 +1,22 @@
+name: 'Docker Publish'
+description: 'Publish Docker images'
+author: 'Marc Nuri'
+inputs:
+  name:
+    description: 'Name of the Docker image'
+    required: true
+  tag:
+    description: 'Tag for the Docker image'
+    required: true
+  username:
+    description: 'Username for Docker registry'
+    required: true
+  password:
+    description: 'Password for Docker registry'
+    required: true
+  registry:
+    description: 'Registry URL'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
