@@ -5,7 +5,7 @@ LABEL MAINTAINER="Marc Nuri <marc@marcnuri.com>"
 
 COPY . .
 
-RUN apk add docker \
-    npm install --production
+RUN    apk add docker \
+    && npm install --production
 
 ENTRYPOINT ["node", "/src/index.js"]
