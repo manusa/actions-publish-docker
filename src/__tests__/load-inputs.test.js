@@ -12,7 +12,6 @@ describe('load-inputs module test suite', () => {
       // Given
       process.env = {
         INPUT_NAME: 'name',
-        INPUT_TAG: 'tag',
         INPUT_USERNAME: 'username',
         INPUT_PASSWORD: 's3cr3t'
       };
@@ -24,7 +23,8 @@ describe('load-inputs module test suite', () => {
           name: 'name',
           username: 'username',
           password: 's3cr3t',
-          tag: 'tag',
+          tag: '',
+          tagScript: '',
           registry: '',
           includePullRequests: false
         })
@@ -33,7 +33,7 @@ describe('load-inputs module test suite', () => {
       // Given
       process.env = {
         INPUT_NAME: 'name',
-        INPUT_TAG: 'tag'
+        INPUT_PASSWORD: 's3cr3t'
       };
       // When - Then
       expect(loadInputs).to.throw('Input required and not supplied: username');
@@ -46,6 +46,8 @@ describe('load-inputs module test suite', () => {
         INPUT_USERNAME: 'username',
         INPUT_PASSWORD: 's3cr3t',
         INPUT_REGISTRY: 'https://hub.marcnuri.com',
+        INPUT_TAG: 'tag',
+        INPUT_TAG_SCRIPT: 'console.log("This is a script");',
         INPUT_INCLUDE_PULL_REQUESTS: 'TrUE'
       };
       // When
@@ -57,6 +59,7 @@ describe('load-inputs module test suite', () => {
           username: 'username',
           password: 's3cr3t',
           tag: 'tag',
+          tagScript: 'console.log("This is a script");',
           registry: 'https://hub.marcnuri.com',
           includePullRequests: true
         })

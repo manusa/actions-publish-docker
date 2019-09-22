@@ -2,6 +2,7 @@
 'use strict';
 
 const loadInputs = require('./load-inputs');
+const tag = require('./tag');
 const docker = require('./docker');
 
 const canPerformAction = inputs => {
@@ -17,6 +18,8 @@ const canPerformAction = inputs => {
 const run = () => {
   const inputs = loadInputs();
   if (canPerformAction(inputs)) {
+    const tagName = tag.computeTagName(inputs);
+    console.log(`Tag name for image: ${tagName}`);
     docker.build(inputs);
     docker.login(inputs);
     docker.push(inputs);

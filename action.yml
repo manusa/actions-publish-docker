@@ -7,7 +7,10 @@ inputs:
     required: true
   tag:
     description: 'Tag for the Docker image'
-    required: true
+    required: false
+  tag script:
+    description: 'Script body to compute tag name for the Docker image, has context as the main function argument'
+    required: false
   username:
     description: 'Username for Docker registry'
     required: true
