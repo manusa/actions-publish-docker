@@ -10,6 +10,8 @@ const loadInputs = () => {
   result.username = core.getInput('username', {required: true});
   result.password = core.getInput('password', {required: true});
   result.registry = core.getInput('registry', {required: false});
+  result.includePullRequests = core.getInput('include pull requests',
+    {required: false}).toString().toLowerCase() === 'true';
   return result;
 };
 

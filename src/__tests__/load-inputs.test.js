@@ -25,7 +25,8 @@ describe('load-inputs module test suite', () => {
           username: 'username',
           password: 's3cr3t',
           tag: 'tag',
-          registry: ''
+          registry: '',
+          includePullRequests: false
         })
     });
     test('Required variables NOT in env, should throw error', () => {
@@ -44,7 +45,8 @@ describe('load-inputs module test suite', () => {
         INPUT_TAG: 'tag',
         INPUT_USERNAME: 'username',
         INPUT_PASSWORD: 's3cr3t',
-        INPUT_REGISTRY: 'https://hub.marcnuri.com'
+        INPUT_REGISTRY: 'https://hub.marcnuri.com',
+        INPUT_INCLUDE_PULL_REQUESTS: 'TrUE'
       };
       // When
       const result = loadInputs();
@@ -55,7 +57,8 @@ describe('load-inputs module test suite', () => {
           username: 'username',
           password: 's3cr3t',
           tag: 'tag',
-          registry: 'https://hub.marcnuri.com'
+          registry: 'https://hub.marcnuri.com',
+          includePullRequests: true
         })
     });
   });

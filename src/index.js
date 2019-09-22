@@ -4,12 +4,24 @@
 const loadInputs = require('./load-inputs');
 const docker = require('./docker');
 
+const canPerformAction = inputs => {
+  if (process.env['GITHUB_REF'].startsWith('refs/pull') && !inputs.includePullRequests) {
+    console.log(
+      `Build triggered from Pull Request, action has not been configured to run on Pull Requests (see "include pull requests" input option for more info)`
+    );
+    return false;
+  }
+  return true;
+};
+
 const run = () => {
   const inputs = loadInputs();
-  docker.build(inputs);
-  docker.login(inputs);
-  docker.push(inputs);
-  console.log('Done!');
+  if (canPerformAction(inputs)) {
+    docker.build(inputs);
+    docker.login(inputs);
+    docker.push(inputs);
+    console.log('Done!');
+  }
 };
 
 run();

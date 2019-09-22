@@ -17,6 +17,9 @@ inputs:
   registry:
     description: 'Registry URL'
     required: false
+  include pull requests:
+    description: "Don't skip pull requests"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
