@@ -24,7 +24,7 @@ const run = async () => {
     const imageName = `${inputs.name}:${tagName}`;
     docker.build(imageName);
     docker.login(inputs);
-    docker.push(inputs);
+    docker.push(imageName);
     console.log('Done!');
   }
 };

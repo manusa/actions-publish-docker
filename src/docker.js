@@ -10,7 +10,8 @@ const build = imageName => {
 const login = inputs => {
   console.log('Logging into docker');
   child_process.execSync(
-    `docker login -u ${inputs.username} -p ${inputs.password}`
+    `docker login -u ${inputs.username} --password-stdin`,
+    {input: inputs.password}
   );
 };
 
