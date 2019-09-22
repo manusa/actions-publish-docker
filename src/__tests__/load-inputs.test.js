@@ -42,7 +42,6 @@ describe('load-inputs module test suite', () => {
       // Given
       process.env = {
         INPUT_NAME: 'name',
-        INPUT_TAG: 'tag',
         INPUT_USERNAME: 'username',
         INPUT_PASSWORD: 's3cr3t',
         INPUT_REGISTRY: 'https://hub.marcnuri.com',

@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/manusa/actions-publish-docker#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "@actions/github": "^1.1.0"
   },
   "devDependencies": {
-    "@actions/github": "^1.1.0",
     "chai": "^4.2.0",
     "jest": "^24.9.0"
   }
