@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+const errorHandler = require('./error-handler');
 const loadInputs = require('./load-inputs');
 const tag = require('./tag');
 const docker = require('./docker');
@@ -28,4 +29,5 @@ const run = async () => {
   }
 };
 
-run();
+process.on('unhandledRejection', errorHandler);
+run().catch(errorHandler);
