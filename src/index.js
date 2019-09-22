@@ -15,12 +15,13 @@ const canPerformAction = inputs => {
   return true;
 };
 
-const run = () => {
+const run = async () => {
   const inputs = loadInputs();
   if (canPerformAction(inputs)) {
-    const tagName = tag.computeTagName(inputs);
+    const tagName = await tag.computeTagName(inputs);
     console.log(`Tag name for image: ${tagName}`);
-    docker.build(inputs);
+    const imageName = `${inputs.name}:${tagName}`;
+    docker.build(imageName);
     docker.login(inputs);
     docker.push(inputs);
     console.log('Done!');

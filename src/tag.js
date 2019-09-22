@@ -6,11 +6,11 @@ const defaultTagName = () =>
     .replace('refs/tags/', '')
     .replace('refs/pull/', '');
 
-const computeTagName = inputs => {
+const computeTagName = async inputs => {
   if (inputs.tag) {
     return inputs.tag;
   } else if (inputs.tagScript) {
-    return script(inputs.tagScript);
+    return await script(inputs.tagScript);
   }
   return defaultTagName();
 };

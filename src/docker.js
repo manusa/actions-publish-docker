@@ -2,9 +2,8 @@
 
 const child_process = require('child_process');
 
-const build = inputs => {
-  console.log('Building docker image');
-  const imageName = `${inputs.name}:${inputs.tag}`;
+const build = imageName => {
+  console.log(`Building docker image: ${imageName}`);
   child_process.execSync(`docker build -t ${imageName} .`)
 };
 
