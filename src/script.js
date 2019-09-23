@@ -1,3 +1,5 @@
+'use strict';
+
 const {context} = require('@actions/github');
 const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
 

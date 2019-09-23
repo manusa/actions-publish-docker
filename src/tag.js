@@ -1,3 +1,5 @@
+'use strict';
+
 const script = require('./script');
 
 const defaultTagName = () =>
