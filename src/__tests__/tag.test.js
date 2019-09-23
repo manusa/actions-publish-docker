@@ -40,7 +40,17 @@ describe('tag module test suite', () => {
         // When
         const result = await tag.computeTagName({});
         // Then
-        expect(result).to.equal('master');
+        expect(result).to.equal('latest');
+      });
+      test('Action triggered from develop branch, should return branch name', async () => {
+        // Given
+        process.env = {
+          GITHUB_REF: 'refs/heads/develop'
+        };
+        // When
+        const result = await tag.computeTagName({});
+        // Then
+        expect(result).to.equal('develop');
       });
       test('Action triggered from tag, should return tag name', async () => {
         // Given

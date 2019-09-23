@@ -2,11 +2,16 @@
 
 const script = require('./script');
 
-const defaultTagName = () =>
-  process.env['GITHUB_REF']
+const defaultTagName = () =>{
+  const ref = process.env['GITHUB_REF'];
+  if (ref === 'refs/heads/master') {
+    return 'latest';
+  }
+  return ref
     .replace('refs/heads/', '')
     .replace('refs/tags/', '')
     .replace('refs/pull/', '');
+};
 
 const computeTagName = async inputs => {
   if (inputs.tag) {
