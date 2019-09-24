@@ -25,4 +25,5 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://marcnuri/node-10-docker-alpine'
+  entrypoint: 'entrypoint.sh';
