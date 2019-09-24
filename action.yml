@@ -24,5 +24,5 @@ inputs:
     description: "Don't skip pull requests"
     required: false
 runs:
-  using: 'ubuntu-18.04'
-  main: 'entrypoint.sh'
+  using: 'node12'
+  main: 'entrypoint.js'
