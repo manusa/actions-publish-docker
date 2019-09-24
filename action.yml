@@ -24,6 +24,5 @@ inputs:
     description: "Don't skip pull requests"
     required: false
 runs:
-  using: 'docker'
-  image: 'docker://marcnuri/node-10-docker-alpine'
-  entrypoint: 'entrypoint.sh'
+  using: 'node12'
+  main: 'src/index.js'
