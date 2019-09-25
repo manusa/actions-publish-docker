@@ -19,7 +19,7 @@ steps:
     if: success()
     uses: manusa/actions-publish-docker@master
     with:
-      name: marcnuri/mnimapsync
+      name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
       password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 ```
@@ -55,7 +55,7 @@ steps:
     if: success()
     uses: manusa/actions-publish-docker@master
     with:
-      name: marcnuri/mnimapsync
+      name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
       password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       tag script: |
