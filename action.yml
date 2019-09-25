@@ -1,6 +1,9 @@
 name: 'Docker Publish'
 description: 'Publish Docker images'
 author: 'Marc Nuri'
+branding:
+  icon: upload-cloud
+  color: blue
 inputs:
   name:
     description: 'Name of the Docker image'
