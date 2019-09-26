@@ -27,4 +27,5 @@ inputs:
     description: "Don't skip pull requests"
     required: false
 runs:
+  using: 'docker'
   image: 'Dockerfile'
