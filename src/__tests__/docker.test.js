@@ -32,10 +32,7 @@ describe('docker module test suite', () => {
     expect(child_process.execSync).toHaveBeenCalledTimes(1);
     expect(child_process.execSync).toHaveBeenCalledWith(
       'docker login -u User --password-stdin https://my.own.registry',
-      {
-        input: 'S3cr3t',
-        stdio: "inherit"
-      }
+      { input: 'S3cr3t' }
     );
   });
   test('push, should invoke docker push command', () => {
