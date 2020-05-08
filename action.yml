@@ -26,6 +26,9 @@ inputs:
   include pull requests:
     description: "Don't skip pull requests"
     required: false
+  dockerfile path:
+    description: "Path to Dockerfile"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
