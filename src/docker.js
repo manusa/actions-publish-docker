@@ -3,6 +3,9 @@
 const child_process = require('child_process');
 
 const build = (imageName, dockerfilePath = ".") => {
+  if (dockerfilePath === "") {
+    dockerfilePath = "."
+  }
   console.log(`Building docker image: ${imageName} at path ${dockerfilePath}`);
   child_process.execSync(`docker build -t ${imageName} ${dockerfilePath}`);
 };
