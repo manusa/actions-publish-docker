@@ -3,7 +3,6 @@ Publish to Docker GitHub Action
 
 [<img src="https://github.com/manusa/actions-publish-docker/workflows/Main%20workflow/badge.svg" />](https://github.com/manusa/actions-publish-docker/actions)
 
-
 This GitHub action allows you to create and publish Docker images into a Docker registry.
 
 ## Usage
@@ -26,9 +25,9 @@ steps:
 
 ### Required input parameters
 
-| Parameter | Description |
-| --------- | ----------- |
-| `name` | Name of the Docker image |
+| Parameter  | Description                  |
+| ---------- | ---------------------------- |
+| `name`     | Name of the Docker image     |
 | `username` | Username for Docker registry |
 | `password` | Password for Docker registry |
 
@@ -37,12 +36,13 @@ will be tagged as `latest`).
 
 ### Optional input parameters
 
-| Parameter | Description |
-| --------- | ----------- |
-| `tag` | Tag for the Docker image |
-| `tag script` | Script to compute tag name for the Docker image, receives `context` as a variable. Ignored if used together with `tag` parameter |
-| `registry` | URL for the Docker registry to login |
+| Parameter               | Description                                                                                                                                                             |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tag`                   | Tag for the Docker image                                                                                                                                                |
+| `tag script`            | Script to compute tag name for the Docker image, receives `context` as a variable. Ignored if used together with `tag` parameter                                        |
+| `registry`              | URL for the Docker registry to login                                                                                                                                    |
 | `include pull requests` | By default (to avoid accidents) action is ignored in pull requests. This parameter will force publishing the image even if the action was triggered from a pull request |
+| `dockerfile path`       | By default the path to the `Dockerfile` is `.`, this parameter lets you change this.                                                                                    |
 
 ### Advanced
 
