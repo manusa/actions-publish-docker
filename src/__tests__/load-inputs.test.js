@@ -26,7 +26,8 @@ describe('load-inputs module test suite', () => {
           tag: '',
           tagScript: '',
           registry: '',
-          includePullRequests: false
+          includePullRequests: false,
+          dockerfilePath: ""
         })
     });
     test('Required variables NOT in env, should throw error', () => {
@@ -47,7 +48,8 @@ describe('load-inputs module test suite', () => {
         INPUT_REGISTRY: 'https://hub.marcnuri.com',
         INPUT_TAG: 'tag',
         INPUT_TAG_SCRIPT: 'console.log("This is a script");',
-        INPUT_INCLUDE_PULL_REQUESTS: 'TrUE'
+        INPUT_INCLUDE_PULL_REQUESTS: 'TrUE',
+        INPUT_DOCKERFILE_PATH: "."
       };
       // When
       const result = loadInputs();
@@ -60,7 +62,8 @@ describe('load-inputs module test suite', () => {
           tag: 'tag',
           tagScript: 'console.log("This is a script");',
           registry: 'https://hub.marcnuri.com',
-          includePullRequests: true
+          includePullRequests: true,
+          dockerfilePath: "."
         })
     });
   });
