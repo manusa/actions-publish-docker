@@ -25,9 +25,9 @@ describe('load-inputs module test suite', () => {
           password: 's3cr3t',
           tag: '',
           tagScript: '',
-          registry: '',
+          registry: undefined,
           includePullRequests: false,
-          dockerfilePath: ""
+          dockerfilePath: undefined
         })
     });
     test('Required variables NOT in env, should throw error', () => {

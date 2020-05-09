@@ -1,0 +1,55 @@
+name: Run action and validate (E2E test)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    - cron: '0 3 * * *' # Everyday at 3
+
+jobs:
+  private-registry:
+    name: Local Private Registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Create local Docker Registry
+        run: |
+          mkdir certs
+          openssl req -nodes -newkey rsa:2048 -keyout certs/cert.key -x509 -days 365 -out certs/cert.crt \
+            -subj "/C=GB/ST=Cloud/L=Cloud/O=The Mob/OU=IT Dept./CN=example.com"
+          mkdir auth
+          docker run \
+            --name registry \
+            --entrypoint htpasswd \
+            registry:2 -Bbn actionuser actionPassword > auth/htpasswd
+          docker rm registry
+          docker run -d \
+            -p 5000:5000 \
+            --name registry \
+            -v "$(pwd)"/auth:/auth \
+            -e "REGISTRY_AUTH=htpasswd" \
+            -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+            -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+            -v "$(pwd)"/certs:/certs \
+            -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/cert.crt \
+            -e REGISTRY_HTTP_TLS_KEY=/certs/cert.key \
+            registry:2
+      - name: Test Action
+        uses: ./
+        with:
+          name: actionuser/inception
+          tag script: |
+            return 'jsgenerated' + new Date().getTime();
+          registry: localhost:5000
+          username: actionuser
+          password: actionPassword
+          include pull requests: true
+      - name: Verify pushed Image
+        run: |
+          curl -k --user actionuser:actionPassword https://localhost:5000/v2/_catalog \
+            | grep -e '{"repositories":\["actionuser/inception"\]}'
+          curl -k --user actionuser:actionPassword https://localhost:5000/v2/actionuser/inception/tags/list \
+            | grep jsgenerated

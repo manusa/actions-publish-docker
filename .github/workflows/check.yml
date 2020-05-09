@@ -1,14 +1,18 @@
-name: Main workflow
+name: Code checks
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
-  main:
-    name: Main
+  checks:
+    name: Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@master
       - name: npm install
@@ -17,4 +21,3 @@ jobs:
         run: npm test
       - name: Docker build
         run: docker build .
-
