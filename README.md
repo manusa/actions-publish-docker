@@ -16,7 +16,7 @@ steps:
   - run: commandToBuildYourProject.sh
   - name: Dockerize
     if: success()
-    uses: manusa/actions-publish-docker@master
+    uses: manusa/actions-publish-docker@v1.1.0
     with:
       name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
@@ -53,7 +53,7 @@ steps:
   - run: commandToBuildYourProject.sh
   - name: Dockerize
     if: success()
-    uses: manusa/actions-publish-docker@master
+    uses: manusa/actions-publish-docker@v1.1.0
     with:
       name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
@@ -65,7 +65,7 @@ steps:
           .replace('refs/pull/'
           .replace(/\//g, '_')
           .replace(/#/g, '');
-      registry: localhost:8080
+      registry: localhost:5000
 ```
 
 ## License

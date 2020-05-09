@@ -17,14 +17,18 @@ const canPerformAction = inputs => {
 };
 
 const run = async () => {
-  const inputs = loadInputs();
-  if (canPerformAction(inputs)) {
-    const tagName = await tag.computeTagName(inputs);
+  const params = loadInputs();
+  if (canPerformAction(params)) {
+    const tagName = await tag.computeTagName(params);
     console.log(`Tag name for image: ${tagName}`);
-    const imageName = `${inputs.name}:${tagName}`;
-    docker.build(imageName, inputs.dockerfilePath);
-    docker.login(inputs);
-    docker.push(imageName);
+    params.imageName = `${params.name}:${tagName}`;
+    if (params.registry) {
+      params.imageName = `${params.registry}/${params.imageName}`;
+    }
+    console.log(`Image name: ${params.imageName}`);
+    docker.build(params);
+    docker.login(params);
+    docker.push(params);
     console.log('Done!');
   }
 };
