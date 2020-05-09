@@ -22,7 +22,7 @@ const run = async () => {
     const tagName = await tag.computeTagName(inputs);
     console.log(`Tag name for image: ${tagName}`);
     const imageName = `${inputs.name}:${tagName}`;
-    docker.build(imageName);
+    docker.build(imageName, inputs.dockerfilePath);
     docker.login(inputs);
     docker.push(imageName);
     console.log('Done!');

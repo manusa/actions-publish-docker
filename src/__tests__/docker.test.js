@@ -6,13 +6,13 @@ describe('docker module test suite', () => {
     jest.mock('child_process');
     docker = require('../docker');
     child_process = require('child_process');
-    child_process.execSync.mockImplementation(() => {});
+    child_process.execSync.mockImplementation(() => { });
   });
   test('build, should invoke docker build command', () => {
     // Given
     const imageName = 'marcnuri/twain';
     // When
-    docker.build(imageName);
+    docker.build(imageName, ".");
     // Then
     expect(child_process.execSync).toHaveBeenCalledTimes(1);
     expect(child_process.execSync).toHaveBeenCalledWith(
@@ -32,7 +32,7 @@ describe('docker module test suite', () => {
     expect(child_process.execSync).toHaveBeenCalledTimes(1);
     expect(child_process.execSync).toHaveBeenCalledWith(
       'docker login -u User --password-stdin https://my.own.registry',
-      {input: 'S3cr3t'}
+      { input: 'S3cr3t' }
     );
   });
   test('push, should invoke docker push command', () => {

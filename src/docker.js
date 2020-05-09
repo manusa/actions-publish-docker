@@ -2,16 +2,19 @@
 
 const child_process = require('child_process');
 
-const build = imageName => {
-  console.log(`Building docker image: ${imageName}`);
-  child_process.execSync(`docker build -t ${imageName} .`);
+const build = (imageName, dockerfilePath = ".") => {
+  if (dockerfilePath === "") {
+    dockerfilePath = "."
+  }
+  console.log(`Building docker image: ${imageName} at path ${dockerfilePath}`);
+  child_process.execSync(`docker build -t ${imageName} ${dockerfilePath}`);
 };
 
 const login = inputs => {
   console.log('Logging into docker');
   child_process.execSync(
     `docker login -u ${inputs.username} --password-stdin ${inputs.registry}`,
-    {input: inputs.password}
+    { input: inputs.password }
   );
 };
 
