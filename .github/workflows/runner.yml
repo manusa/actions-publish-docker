@@ -22,10 +22,8 @@ jobs:
             -subj "/C=GB/ST=Cloud/L=Cloud/O=The Mob/OU=IT Dept./CN=example.com"
           mkdir auth
           docker run \
-            --name registry \
-            --entrypoint htpasswd \
-            registry:2 -Bbn actionuser actionPassword > auth/htpasswd
-          docker rm registry
+            --rm \
+              marcnuri/htpasswd -Bbn actionuser actionPassword > auth/htpasswd
           docker run -d \
             -p 5000:5000 \
             --name registry \
