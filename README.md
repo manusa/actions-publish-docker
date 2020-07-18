@@ -16,7 +16,7 @@ steps:
   - run: commandToBuildYourProject.sh
   - name: Dockerize
     if: success()
-    uses: manusa/actions-publish-docker@v1.1.0
+    uses: manusa/actions-publish-docker@v1.1.1
     with:
       name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
@@ -53,7 +53,7 @@ steps:
   - run: commandToBuildYourProject.sh
   - name: Dockerize
     if: success()
-    uses: manusa/actions-publish-docker@v1.1.0
+    uses: manusa/actions-publish-docker@v1.1.1
     with:
       name: organization/image_name
       username: ${{ secrets.DOCKER_HUB_USER }}
